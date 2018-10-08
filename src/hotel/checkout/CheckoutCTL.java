@@ -66,6 +66,7 @@ public class CheckoutCTL {
 			total = 0;
 			List<ServiceCharge> charges = booking.getCharges();
 			for (ServiceCharge sc : charges) {
+
 				total += sc.getCost();
 				String chargeStr = String.format("    %-12s:%10s", 
 						sc.getDescription(), String.format("$%.2f", sc.getCost()));
@@ -135,6 +136,9 @@ public class CheckoutCTL {
 		checkoutUI.displayMessage("Checking out completed");
 	}
 
-
+	public void setStateToRoom(){
+		//This is used for testing purposes
+		this.state = State.ROOM;
+	}
 
 }
