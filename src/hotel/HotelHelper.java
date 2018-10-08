@@ -39,7 +39,7 @@ public class HotelHelper {
 		long confNo = hotel.book(room, guest, date, 1, 2, card);
 		Booking booking = hotel.findBookingByConfirmationNumber(confNo);
 		hotel.checkin(confNo);
-		booking.addServiceCharge(ServiceType.ROOM_SERVICE, 7.00);
+		//booking.addServiceCharge(ServiceType.ROOM_SERVICE, 7.00);
 		
 		IOUtils.trace("HotelHelper");
 		for (RoomType rt : RoomType.values()) {
