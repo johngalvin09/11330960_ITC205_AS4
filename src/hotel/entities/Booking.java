@@ -134,7 +134,11 @@ public class Booking {
 
 
 	public void checkIn() {
+		if (!isPending()){
+			throw new RuntimeException("Booking Entity cannot call checkIn except in PENDING State");
+		}
 		room.checkin();
+		state = State.CHECKED_IN;
 	}
 
 
