@@ -4,6 +4,7 @@ package Tests;
 import hotel.HotelHelper;
 import hotel.checkout.CheckoutCTL;
 import hotel.credit.CreditCardType;
+import hotel.entities.Booking;
 import hotel.entities.Hotel;
 import hotel.entities.ServiceType;
 import hotel.service.RecordServiceCTL;
@@ -48,17 +49,35 @@ public class Bug2Replication {
 
 
     @Test
-    void replicateBug1() {
+    void replicateBug2() {
         //arrange
         testCheckoutCTL.setStateToRoom();
         testCheckoutCTL.roomIdEntered(testRoomId);
         testCheckoutCTL.chargesAccepted(true);
         testCheckoutCTL.creditDetailsEntered(testCreditCardType,testCardNumber,TestCcv);
 
+
         //Act
         TestRecordServiceCTL = new RecordServiceCTL(testHotel);
         TestRecordServiceCTL.roomNumberEntered(testRoomId);
         TestRecordServiceCTL.serviceDetailsEntered(ServiceType.BAR_FRIDGE, 10.00);
+
+    }
+
+
+    @Test
+    void replicateBug2NoERROR() {
+        //arrange
+        testCheckoutCTL.setStateToRoom();
+        testCheckoutCTL.roomIdEntered(testRoomId);
+        testCheckoutCTL.chargesAccepted(true);
+        testCheckoutCTL.creditDetailsEntered(testCreditCardType,testCardNumber,TestCcv);
+
+
+        //Act
+        TestRecordServiceCTL = new RecordServiceCTL(testHotel);
+        TestRecordServiceCTL.roomNumberEntered(testRoomId);
+
 
     }
 
