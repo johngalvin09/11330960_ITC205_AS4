@@ -67,12 +67,26 @@ public class Room {
 
 
 	public void checkin() {
+		if (!this.isReady()) {
+			throw new RuntimeException("The Room is not ready to be checked in must be in a READY state");
+		}
 		state = State.OCCUPIED;
 	}
 
 
 	public void checkout(Booking booking) {
-		state = state.READY;
+		if (!this.isOccupied()) {
+			throw new RuntimeException("Checkout cannot be processed unless in the OCCUPIED State");
+		}
+		if(!bookings.contains(booking)) {
+			throw new RuntimeException("Cannot check out of a Room that isn't associated with the Booking");
+		}
+		bookings.remove(booking);
+		state = State.READY;
+	}
+
+	boolean isOccupied(){
+		return state == State.OCCUPIED;
 	}
 
 
