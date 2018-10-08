@@ -148,7 +148,11 @@ public class Booking {
 
 
 	public void checkOut() {
+		if (!isCheckedIn()){
+			throw new RuntimeException("Booking Entity charges cannot be added except in CHECKED_IN state");
+		}
 		room.checkout(this);
+		state = State.CHECKED_OUT;
 	}
 
 }
