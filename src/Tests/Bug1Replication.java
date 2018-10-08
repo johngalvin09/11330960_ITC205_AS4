@@ -1,6 +1,7 @@
-package hotel;
+package Tests;
 
 
+import hotel.HotelHelper;
 import hotel.checkout.CheckoutCTL;
 import hotel.credit.CreditCardType;
 import hotel.entities.*;
